@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.trimblecars'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Core
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aop' // For logging and aspects
+    implementation 'org.springframework.boot:spring-boot-starter-security' // Security support
+
+    // H2 Database
+    runtimeOnly 'com.h2database:h2'
+
+    // Lombok for reducing boilerplate code
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // OpenAPI / Swagger for API Documentation
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+    // Spring Boot Actuator for Monitoring & Health Checks
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // Test Dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test' // Security-related test support
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
